@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import RequireAuth from './components/auth/RequireAuth';
+import Dashboard from './components/Dashboard';
+import ExerciseEditor from './components/exercise/ExerciseEditor';
+import ExerciseFormCreate from './components/exercise/ExerciseFormCreate';
+import FeedbackAlert from './components/FeedbackAlert';
+import LoginForm from './components/auth/LoginForm';
+import Navbar from './components/Navbar';
+import PageNotFound from './components/PageNotFound';
+import { ExerciseProvider } from './context/exercise.context';
+import { FeedbackProvider } from './context/feedback.context';
+import { SessionProvider } from './context/session.context';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <SessionProvider>
+        <ExerciseProvider>
+          <FeedbackProvider>
+            <Navbar />
+            <Routes>
+              {/* Public Routes */}
+              <Route path='/' element={<LoginForm />} />
+
+              {/* Private Routes */}
+              <Route element={<RequireAuth />}>
+                <Route path='/dashboard' element={<Dashboard />} />
+                {/* <Route path='/exercises' element={<ExerciseDashboard />} /> */}
+                <Route path='/exercises/new' element={<ExerciseFormCreate />} />
+                <Route path='/exercises/:id' element={<ExerciseEditor />} />
+                <Route path='*' element={<PageNotFound />} />
+              </Route>
+            </Routes>
+            <FeedbackAlert />
+          </FeedbackProvider>
+        </ExerciseProvider>
+      </SessionProvider>
+    </Router>
   );
 }
 
