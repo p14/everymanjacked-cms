@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, MenuItem, TextField } from '@mui/material';
+import { Box, Card, MenuItem, TextField } from '@mui/material';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 
 interface DataTableProps {

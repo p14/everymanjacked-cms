@@ -10,7 +10,7 @@ const ExerciseDashboard: React.FC = () => {
   return (
     <Box sx={{ mt: 5 }}>
       <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-        <Typography component='h6' variant='h6' sx={{ fontWeight: 600 }}>
+        <Typography component='h5' variant='h5' sx={{ fontWeight: 600 }}>
           Exercises
         </Typography>
         <Button variant='contained' onClick={() => navigate('/exercises/new')}>
