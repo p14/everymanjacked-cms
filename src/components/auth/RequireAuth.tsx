@@ -3,22 +3,22 @@ import { useSessionContext } from '../../context/session.context';
 
 const RequireAuth = () => {
 
-  const sessionContext = useSessionContext();
+    const sessionContext = useSessionContext();
 
-  if (!sessionContext.isLoggedIn) {
+    if (!sessionContext.isLoggedIn) {
+        return (
+            <Navigate to='/' />
+        );
+    }
+
+    /**
+     * Change background color to white when signed into the app
+     */
+    document.body.style.backgroundColor = '#fff';
+
     return (
-      <Navigate to='/' />
+        <Outlet />
     );
-  }
-
-  /**
-   * Change background color to white when signed into the app
-   */
-  document.body.style.backgroundColor = '#fff';
-
-  return (
-    <Outlet />
-  );
 }
 
 export default RequireAuth;

@@ -1,4 +1,4 @@
 export const enum DataType {
-  EXERCISE = 'exercises',
-  USER = 'users',
+    EXERCISE = 'exercises',
+    USER = 'users',
 };

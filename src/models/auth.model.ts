@@ -1,13 +1,13 @@
 export interface TokenData {
-  AuthenticationResult: any
+    AuthenticationResult: any
 }
 
 export interface LoginData {
-  username: string
-  password: string
+    username: string
+    password: string
 }
 
 export const initialLoginData = {
-  username: '',
-  password: '',
+    username: '',
+    password: '',
 }

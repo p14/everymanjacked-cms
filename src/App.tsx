@@ -15,32 +15,32 @@ import Login from './components/auth/Login';
 import { customTheme } from './styles/global.styles';
 
 const App: React.FC = () => {
-  return (
-    <Router>
-      <ThemeProvider theme={customTheme}>
-        <SessionProvider>
-          <ExerciseProvider>
-            <FeedbackProvider>
-              <Navbar />
-                <Routes>
-                  {/* Public Routes */}
-                  <Route path='/' element={<Login />} />
-                  {/* Private Routes */}
-                  <Route element={<RequireAuth />}>
-                    <Route path='/dashboard' element={<Dashboard />} />
-                    {/* <Route path='/exercises' element={<ExerciseDashboard />} /> */}
-                    <Route path='/exercises/new' element={<ExerciseFormCreate />} />
-                    <Route path='/exercises/:id' element={<ExerciseEditor />} />
-                    <Route path='*' element={<PageNotFound />} />
-                  </Route>
-                </Routes>
-              <FeedbackAlert />
-            </FeedbackProvider>
-          </ExerciseProvider>
-        </SessionProvider>
-      </ThemeProvider>
-    </Router>
-  );
+    return (
+        <Router>
+            <ThemeProvider theme={customTheme}>
+                <SessionProvider>
+                    <ExerciseProvider>
+                        <FeedbackProvider>
+                            <Navbar />
+                                <Routes>
+                                    {/* Public Routes */}
+                                    <Route path='/' element={<Login />} />
+                                    {/* Private Routes */}
+                                    <Route element={<RequireAuth />}>
+                                        <Route path='/dashboard' element={<Dashboard />} />
+                                        {/* <Route path='/exercises' element={<ExerciseDashboard />} /> */}
+                                        <Route path='/exercises/new' element={<ExerciseFormCreate />} />
+                                        <Route path='/exercises/:id' element={<ExerciseEditor />} />
+                                        <Route path='*' element={<PageNotFound />} />
+                                    </Route>
+                                </Routes>
+                            <FeedbackAlert />
+                        </FeedbackProvider>
+                    </ExerciseProvider>
+                </SessionProvider>
+            </ThemeProvider>
+        </Router>
+    );
 }
 
 export default App;
