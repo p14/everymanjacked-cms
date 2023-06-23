@@ -47,7 +47,7 @@ export const statusCheck = (): Promise<AxiosResponse> => {
 
 
 export const login = (loginData: LoginData): Promise<AxiosResponse> => {
-    const config = setupAuthConfig('POST', '/account/admin/login', loginData);
+    const config = setupAuthConfig('POST', '/auth/admin/login', loginData);
     return axios.request(config);
 };
 
@@ -62,7 +62,7 @@ export const refresh = async (): Promise<string> => {
         throw new Error('No Refresh Token Found');
     }
 
-    const config = setupAuthConfig('POST', '/account/refresh', { refreshToken });
+    const config = setupAuthConfig('POST', '/auth/refresh', { refreshToken });
     return axios.request(config)
         .then((response) => response.data)
         .then((data => {
